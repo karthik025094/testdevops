@@ -8,7 +8,13 @@ trigger:
 
 pool:
   vmImage: ubuntu-latest
-
+resources:
+  webhooks:
+    - webhook: testewh
+      connection: testewh
+      # filters:
+      #   - path: action
+      #     value: closed
 steps:
 - script: echo Hello, world!
   displayName: 'Run a one-line script'
