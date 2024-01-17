@@ -1,0 +1,13 @@
+on:
+  pull_request:
+    branches:
+    - main
+jobs:
+  my_job:
+    name: deploy to staging
+    runs-on: windows-2019
+    
+    steps:
+      - name: Get contents of files
+        shell: pwsh
+        run: Write-Host "File"
