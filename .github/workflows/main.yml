@@ -20,4 +20,5 @@ jobs:
       - name: Run PowerShell Script
         shell: pwsh
         run: |
+          ls
           .\test.ps1 -inputValue "${{ steps.pr-labels.outputs.labels }}"
