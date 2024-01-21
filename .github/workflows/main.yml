@@ -20,9 +20,9 @@ jobs:
       - name: Run PowerShell Script
         shell: pwsh
         run: |
-          cat test.ps1
           pwd
           cd ..
+          cat test.ps1
           ls
           cd ${{ github.workspace }}
           ls
