@@ -16,3 +16,8 @@ jobs:
       - name: Get contents of files
         shell: pwsh
         run: Write-Host "${{ steps.pr-labels.outputs.labels }}"
+
+      - name: Run PowerShell Script
+        shell: pwsh
+        run: |
+          .\test.ps1 -inputValue "${{ steps.pr-labels.outputs.labels }}"
