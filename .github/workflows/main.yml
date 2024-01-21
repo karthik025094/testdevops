@@ -9,6 +9,9 @@ jobs:
     runs-on: windows-2019
     
     steps:
+      - name: PR labels
+        uses: joerick/pr-labels-action@v1.0.9
+
       - name: Get contents of files
         shell: pwsh
         run: Write-Host "File"
