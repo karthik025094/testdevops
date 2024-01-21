@@ -18,11 +18,7 @@ jobs:
       - name: Get contents of files
         shell: pwsh
         run: Write-Host "${{ steps.pr-labels.outputs.labels }}"
-        
-      - name: Set up PowerShell environment
-        uses: microsoft/powershell@v7
-        with:
-          pwsh: true
+
             
       - name: Run PowerShell Script
         shell: pwsh
