@@ -16,14 +16,15 @@ jobs:
       - name: Get contents of files
         shell: pwsh
         run: Write-Host "${{ steps.pr-labels.outputs.labels }}"
-
+        
+      - name: Set up PowerShell environment
+        uses: microsoft/powershell@v7
+        with:
+          pwsh: true
+            
       - name: Run PowerShell Script
         shell: pwsh
         run: |
-          pwd
-          cd ..
-          cat test.ps1
-          ls
           cd ${{ github.workspace }}
           ls
           # .\test.ps1 -inputValue "${{ steps.pr-labels.outputs.labels }}"
