@@ -21,4 +21,4 @@ jobs:
         shell: pwsh
         run: |
           ls
-          .\test.ps1 -inputValue "${{ steps.pr-labels.outputs.labels }}"
+          # .\test.ps1 -inputValue "${{ steps.pr-labels.outputs.labels }}"
