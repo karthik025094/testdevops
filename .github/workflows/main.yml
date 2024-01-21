@@ -14,4 +14,4 @@ jobs:
 
       - name: Get contents of files
         shell: pwsh
-        run: Write-Host "$GITHUB_PR_LABEL_TESTDBNAME"
+        run: Write-Host "${{ steps.pr-labels.outputs.labels }}"
