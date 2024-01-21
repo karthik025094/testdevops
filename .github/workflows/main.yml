@@ -21,6 +21,7 @@ jobs:
         shell: pwsh
         run: |
           pwd
+          cd ..
           ls
           cd ${{ github.workspace }}
           ls
