@@ -24,5 +24,6 @@ jobs:
         shell: pwsh
         run: |
           cd ${{ github.workspace }}
+          cat test.txt
           ls
           # .\test.ps1 -inputValue "${{ steps.pr-labels.outputs.labels }}"
