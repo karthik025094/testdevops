@@ -33,31 +33,3 @@ jobs:
           cd ${{ github.workspace }}
           .\test.ps1 -inputValue "${{ steps.extract-label.outputs.FIRST_LABEL }}"
           
-
-      
-      # - name: PR labels
-      #   id: pr-labels
-      #   uses: joerick/pr-labels-action@v1.0.9
-        
-      # - name: Print Labels
-      #   run: |
-      #     $Labels = Get-Content $env:GITHUB_EVENT_PATH | ConvertFrom-Json | Select-Object -ExpandProperty pull_request | Select-Object -ExpandProperty labels
-      #     $Labels
-      #     foreach ($label in $Labels) {
-      #       Write-Host "Label: $($label.name)"
-      #     }
-          
-      # - name: Get contents of files
-      #   shell: pwsh
-      #   run: Write-Host "${{ steps.pr-labels.outputs.labels }}"
-
-          
-      # - name: Get first label
-      #   id: get-label
-      #   run: |
-      #     $PR_NUMBER = (ConvertFrom-Json (Get-Content $env:GITHUB_EVENT_PATH -Raw)).pull_request.number
-      #     $PR_NUMBER
-          
-      # - name: Use the first label
-      #   run: |
-      #     echo "The first label on the pull request is: ${{ steps.get-label.outputs.first_label }}"
