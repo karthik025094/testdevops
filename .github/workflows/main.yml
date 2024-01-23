@@ -30,8 +30,6 @@ jobs:
         id: get-label
         run: |
           $PR_NUMBER = (ConvertFrom-Json (Get-Content $env:GITHUB_EVENT_PATH -Raw)).pull_request.number
-          $FIRST_LABEL = Invoke-RestMethod -Uri "https://api.github.com/repos/${env:GITHUB_REPOSITORY}/issues/$PR_NUMBER/labels" | Select-Object -ExpandProperty name -First 1
-          Write-Host "##[set-output name=first_label]$FIRST_LABEL"
   
       - name: Use the first label
         run: |
