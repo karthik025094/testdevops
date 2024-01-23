@@ -18,13 +18,14 @@ jobs:
         $Labels = Get-Content $env:GITHUB_EVENT_PATH | ConvertFrom-Json | Select-Object -ExpandProperty pull_request | Select-Object -ExpandProperty labels
         $FirstLabel = $Labels[0].name
         Write-Host "First Label: $FirstLabel"
-        echo "##vso[task.setvariable variable=FIRST_LABEL]$FirstLabel"
+        echo "FIRST_LABEL=$FirstLabel" >> $GITHUB_ENV
 
     - name: Use First Label
       run: |
         $FirstLabel = $env:FIRST_LABEL
         Write-Host "Using First Label: $FirstLabel"
         # Add your subsequent steps here using $FirstLabel
+        
       # - uses: actions/checkout@v2
       
       # - name: PR labels
