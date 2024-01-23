@@ -11,14 +11,6 @@ jobs:
     runs-on: windows-2019
     
     steps:
-    - name: Set color
-      id: color-selector
-      run: Write-Host "SELECTED_COLOR=green" >> $ENV:GITHUB_OUTPUT
-      
-    - name: Get color
-      env:
-        SELECTED_COLOR: ${{ steps.color-selector.outputs.SELECTED_COLOR }}
-      run: Write-Host "The selected color is $SELECTED_COLOR"
       
     - name: Extract First Label
       id: extract-label
@@ -30,10 +22,16 @@ jobs:
 
     - name: Use First Label
       run: |
-        $FirstLabel = ${{ steps.extract-label.outputs.FIRST_LABEL }}
+        $FirstLabel = "${{ steps.extract-label.outputs.FIRST_LABEL }}"
         Write-Host "Using First Label: $FirstLabel"
         # Add your subsequent steps here using $FirstLabel
         
+    - name: Run PowerShell Script
+      shell: pwsh
+      run: |
+          cd ${{ github.workspace }}
+          .\test.ps1 -inputValue "${{ steps.extract-label.outputs.FIRST_LABEL }}"
+          
       # - uses: actions/checkout@v2
       
       # - name: PR labels
@@ -52,12 +50,6 @@ jobs:
       #   shell: pwsh
       #   run: Write-Host "${{ steps.pr-labels.outputs.labels }}"
 
-            
-      # - name: Run PowerShell Script
-      #   shell: pwsh
-      #   run: |
-      #     cd ${{ github.workspace }}
-      #     .\test.ps1 -inputValue "${{ steps.pr-labels.outputs.labels }}"
           
       # - name: Get first label
       #   id: get-label
