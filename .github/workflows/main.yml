@@ -11,7 +11,8 @@ jobs:
     runs-on: windows-2019
     
     steps:
-      
+    - uses: actions/checkout@v2
+    
     - name: Extract First Label
       id: extract-label
       run: |
@@ -32,7 +33,7 @@ jobs:
           cd ${{ github.workspace }}
           .\test.ps1 -inputValue "${{ steps.extract-label.outputs.FIRST_LABEL }}"
           
-      # - uses: actions/checkout@v2
+
       
       # - name: PR labels
       #   id: pr-labels
