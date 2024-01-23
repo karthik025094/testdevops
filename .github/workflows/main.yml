@@ -22,7 +22,7 @@ jobs:
 
     - name: Use First Label
       run: |
-        $FirstLabel = ${{ env.FIRST_LABEL }}
+        $FirstLabel = $FIRST_LABEL
         Write-Host "Using First Label: $FirstLabel"
         # Add your subsequent steps here using $FirstLabel
         
