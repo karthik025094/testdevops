@@ -17,6 +17,13 @@ jobs:
         id: pr-labels
         uses: joerick/pr-labels-action@v1.0.9
         
+      - name: Print Labels
+        run: |
+          $Labels = $env:GITHUB_EVENT_PATH | Get-Content | ConvertFrom-Json | Select-Object -ExpandProperty pull_request | Select-Object -ExpandProperty labels
+          foreach ($label in $Labels) {
+            Write-Host "Label: $($label.name)"
+          }
+          
       - name: Get contents of files
         shell: pwsh
         run: Write-Host "${{ steps.pr-labels.outputs.labels }}"
