@@ -25,3 +25,14 @@ jobs:
         run: |
           cd ${{ github.workspace }}
           .\test.ps1 -inputValue "${{ steps.pr-labels.outputs.labels }}"
+          
+      - name: Get first label
+        id: get-label
+        run: |
+          PR_NUMBER=$(jq --raw-output .pull_request.number "$GITHUB_EVENT_PATH")
+          FIRST_LABEL=$(curl -s "https://api.github.com/repos/${GITHUB_REPOSITORY}/issues/${PR_NUMBER}/labels" | jq --raw-output '.[0].name')
+          echo "::set-output name=first_label::${FIRST_LABEL}"
+
+      - name: Use the first label
+        run: |
+          echo "The first label on the pull request is: ${{ steps.get-label.outputs.first_label }}"
